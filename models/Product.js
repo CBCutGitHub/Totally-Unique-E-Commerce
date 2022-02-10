@@ -39,7 +39,7 @@ Product.init(
       allowNull: true,
       references: {
         model: 'category',
-        key: 'id',
+        key: 'id',  //foreign key
       },
     },
   },

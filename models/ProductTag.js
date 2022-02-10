@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class ProductTag extends Model {}
-
+//junction table that incorporates both the product id and tag id and uses them as foreign keys
 ProductTag.init(
   {
     id: {
