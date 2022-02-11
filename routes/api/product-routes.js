@@ -117,7 +117,16 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  
+  Product.destroy({
+    where:{
+      id:req.params.id
+    },
+ 
+  }).then(function(response){
+    res.json(response) //send response in jason format
+  }).catch(function(err){
+    res.json(err)
+  })
 });
 
 module.exports = router;
