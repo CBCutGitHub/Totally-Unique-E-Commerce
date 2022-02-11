@@ -5,15 +5,44 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', (req, res) => {
-  
+  Product.findAll({
+    include:[
+      Category, 
+      //link products with tag model using product tag
+     {
+       model:Tag,
+       through: ProductTag
+     }, 
+    ]
+  }).then(function(response){
+    res.json(response) //send response in jason format
+  }).catch(function(err){
+    res.json(err)
+  })
 });
 
-// get one product
+// get one product must get the product id
 router.get('/:id', (req, res) => {
-  
+  Product.findOne({
+    where:{
+      id:req.params.id
+    },
+    include:[
+      Category, 
+      //link products with tag model using product tag
+     {
+       model:Tag,
+       through: ProductTag
+     }, 
+    ]
+  }).then(function(response){
+    res.json(response) //send response in jason format
+  }).catch(function(err){
+    res.json(err)
+  })
 });
 
-// creat new product
+// create new product
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
