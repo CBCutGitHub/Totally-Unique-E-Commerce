@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
     include:[
       Category, 
       //link products with tag model using product tag
-     {
-       model:Tag,
-       through: ProductTag
-     }, 
+    {
+      model:Tag,
+      through: ProductTag
+    }, 
     ]
   }).then(function(response){
     res.json(response) //send response in jason format
@@ -30,10 +30,10 @@ router.get('/:id', (req, res) => {
     include:[
       Category, 
       //link products with tag model using product tag
-     {
-       model:Tag,
-       through: ProductTag
-     }, 
+    {
+      model:Tag,
+      through: ProductTag
+    }, 
     ]
   }).then(function(response){
     res.json(response) //send response in jason format
